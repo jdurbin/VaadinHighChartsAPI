@@ -1,3 +1,13 @@
+## About this Fork
+
+I created this fork to add additional chart types and options. Specifically:
+
+- ScatterChart
+- max and min settings for chart axes
+
+
+
+========= Original README follows:
 # HighChartsAPI Add-on for Vaadin 7
 
 I've decided to implement a easy-to-use graphing tool since there were only expensive solutions for this.
