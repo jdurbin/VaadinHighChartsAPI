@@ -1,6 +1,6 @@
 ## About this Fork
 
-I created this fork to add additional chart types and options. Specifically:
+I (jdurbin) created this fork to add additional chart types and options. Specifically:
 
 - ScatterChart
 - max and min settings for chart axes
