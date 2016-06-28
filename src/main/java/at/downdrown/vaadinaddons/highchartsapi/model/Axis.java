@@ -24,6 +24,9 @@ public class Axis {
     private boolean allowDecimals = true;
     private int tickLength = 1;
     private int gridLineWidth = 1;
+	double tickInterval = Double.NaN;
+	double max = Double.NaN;
+	double min = Double.NaN;
 
     @Deprecated
     /**
@@ -263,6 +266,18 @@ public class Axis {
             }
             builder.append("]");
         }
+		
+		if (!Double.isNaN(this.max)){
+			builder.append(",max: "+this.max);
+		}
+		
+		if (!Double.isNaN(this.min)){
+			builder.append(",min: "+this.min);
+		}
+
+		if (!Double.isNaN(this.tickInterval)){
+			builder.append(",tickInterval: "+this.tickInterval);
+		}		
 
         //Line Color
         if (this.lineColor != null) {

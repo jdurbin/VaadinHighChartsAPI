@@ -4,7 +4,7 @@ I (jdurbin) created this fork to add additional chart types and options. Specifi
 
 - ScatterChart
 - max and min settings for chart axes
-
+- fix bug in ChartConfiguration.  Was outputting zoomZype instead of zoomType, breaking zoom. 
 
 
 ========= Original README follows:

@@ -324,7 +324,8 @@ public class ChartConfiguration {
         }
         if (getChartMargin() != null) builder.append(getChartMargin().getHighChartValue());
 
-        if (this.zoomType != null) builder.append(", zoomZype: '" + this.zoomType.name().toLowerCase() + "'");
+		// BUG FIX HERE.  Was zoomZype. 
+        if (this.zoomType != null) builder.append(", zoomType: '" + this.zoomType.name().toLowerCase() + "'");
 
         //Chart Properties End
         builder.append("}");
