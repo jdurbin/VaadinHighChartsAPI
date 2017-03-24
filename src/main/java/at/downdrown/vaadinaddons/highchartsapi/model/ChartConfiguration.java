@@ -31,6 +31,7 @@ public class ChartConfiguration {
     private boolean creditsEnabled = false;
     private boolean legendEnabled = true;
     private boolean tooltipEnabled = true;
+	private boolean exportingEnabled = true;
     private Axis xAxis = new Axis(Axis.AxisType.xAxis);
     private Axis yAxis = new Axis(Axis.AxisType.yAxis);
     private Margin chartMargin = null;
@@ -99,6 +100,15 @@ public class ChartConfiguration {
         this.creditsEnabled = creditsEnabled;
     }
 
+
+	public boolean isExportingEnabled(){
+		return exportingEnabled;		
+	}
+
+	public void setExportingEnabled(boolean exportingEnabled){
+		this.exportingEnabled = exportingEnabled;
+	}
+	
     public boolean isLegendEnabled() {
         return legendEnabled;
     }
@@ -367,6 +377,9 @@ public class ChartConfiguration {
         builder.append(", credits: { enabled: " + isCreditsEnabled() + " }");
         builder.append(", legend: { enabled: " + isLegendEnabled() + " }");
         builder.append(", tooltip: { enabled: " + isTooltipEnabled() + " }");
+		
+		// Enable or disable buttons for printing/download of chart (useful for small charts.)		
+		builder.append(", exporting: {enabled: "+isExportingEnabled()+"}");
 
         if (!getSeriesList().isEmpty()) {
             int seriesNr = 1;
@@ -398,7 +411,7 @@ public class ChartConfiguration {
                 colorsNr++;
             }
             builder.append("]");
-        }
+        }		
 
         if (this.plotOptions != null) {
             if (this.plotOptions.getChartType() != this.chartType) {
