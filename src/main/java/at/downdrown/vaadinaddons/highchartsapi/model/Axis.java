@@ -27,6 +27,10 @@ public class Axis {
 	double tickInterval = Double.NaN;
 	double max = Double.NaN;
 	double min = Double.NaN;
+	
+	// Temporary in lieu of more complete API. 
+	private String labelStyle = null;	
+	private String plotLines = null;
 
     @Deprecated
     /**
@@ -204,6 +208,24 @@ public class Axis {
     public void setAllowDecimals(boolean allowDecimals) {
         this.allowDecimals = allowDecimals;
     }
+	
+    /**
+     * Returns the current tick interval.
+     * @return {@link Integer}
+     */
+    public double getTickInterval() {
+        return tickInterval;
+    }
+
+    /**
+     * Set the chart's tickLength.
+     *
+     * @param tickInterval - The tick interval you want to set.
+     */
+    public void setTickInterval(double tickInterval) {
+        this.tickInterval = tickInterval;
+    }
+	
 
     /**
      * Returns the current tick length.
@@ -242,6 +264,11 @@ public class Axis {
         StringBuilder builder = new StringBuilder();
         builder.append(this.axisType.name() + ": { ");
 
+		// plotLines
+		if (plotLines != null){			
+			builder.append(plotLines+",");
+		}
+
         //Axis Title
         if (this.title != null) {
             builder.append("title : { text: '" + this.title + "' }");
@@ -265,7 +292,7 @@ public class Axis {
                 catCount++;
             }
             builder.append("]");
-        }
+        }				
 		
 		if (!Double.isNaN(this.max)){
 			builder.append(",max: "+this.max);
@@ -292,7 +319,7 @@ public class Axis {
 
         //TickLength
         builder.append(", tickLength: " + tickLength);
-
+		
         //Allow Decimals
         builder.append(", allowDecimals: " + this.allowDecimals);
 
@@ -303,8 +330,16 @@ public class Axis {
         builder.append(", showLastLabel: " + this.showLastLabel);
 
         //Axis Labels
-        builder.append(", labels: { enabled: " + this.labelsEnabled + " }");
-
+		// If a label style is specified include it.
+		// TODO: implement proper getters/setters for this. 
+		if (labelStyle != null){			
+			builder.append(", labels: { enabled: " + this.labelsEnabled+",");
+		    builder.append(labelStyle);
+			builder.append("}");
+		}else{			
+			builder.append(", labels: { enabled: " + this.labelsEnabled + " }");
+		}
+		
         //Close Tag
         builder.append("}");
 
